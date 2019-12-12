@@ -1,42 +1,57 @@
-import React, { Component } from 'react';
-import './search-panel.css';
+import React from 'react';
+
+const buttonStyle = {
+    background: '#F65261',
+    border: 'none',
+    borderRadius: '3px',
+    marginLeft: '1em',
+    flex: '0 0 10%'
+};
+
+const inputFieldStyle = {
+    backgroundColor: '#555555',
+    color: 'white',
+    borderRadius: '3px',
+    border: 'none',
+    opacity:'0.9',
+    flex: '0 0 90%'
+}
 
 
-class SearchPanel extends Component {
+const Button = ({ text, onClick, style }) => (<button style={style} onClick={onClick}>
+    {text}
+</button>)
 
-    addItem(e) {
-        // Prevent button click from submitting form
-        e.preventDefault();
 
-        // Create variables for our list, the item to add, and our form
-        const newItem = document.getElementById("addInput");
-        const form = document.getElementById("addItemForm");
-        console.log(newItem.value)
-        // If our input has a value
-        if (newItem.value != "") {
-            newItem.classList.remove("is-danger");
-            form.reset();
-        } else {
-            // If the input doesn't have a value, make the border red since it's required
-            newItem.classList.add("is-danger");
-        }
-    }
-    render() {
-        return (
-            <div className="SearchPanel">
-                <form className="form" id="addItemForm">
-                    <input
-                        type="text"
-                        className="SearchPanel-form"
-                        id="addInput"
-                    />
-                    <button className="SearchPanel-button" onClick={this.addItem}>
-                        SEARCH
-                    </button>
-                </form>
-            </div>
-        );
-    }
+const InputField = ({ id, style }) => (<input style={style} id={id} />)
+
+const SearchPanelStyles = { 
+    position: 'absolute', 
+    top: '50%', 
+    left: '50%', 
+    transform: 'translate(-50%,-50%)',
+    width:'90%',
+    height:'20%',
+    display:'flex'
+}
+
+function addItem(e) {
+
+    e.preventDefault();
+
+    const newItem = document.getElementById("addInput");
+    const form = document.getElementById("addItemForm");
+    console.log(newItem.value)
+
+}
+
+const SearchPanel = () => {
+    return (
+            <form style={SearchPanelStyles} id="addItemForm">
+                    <InputField id="addInput" style={inputFieldStyle} />
+                    <Button style={buttonStyle} onClick={addItem} text="SEARCH" />
+            </form>
+    )
 }
 
 export default SearchPanel;
