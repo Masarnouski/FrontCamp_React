@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: "./src/index.jsx",
     output: {
         path: path.join(__dirname, "/dist"),
         filename: "index_bundle.js"
@@ -10,7 +10,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -23,16 +23,19 @@ module.exports = {
             {
                 test: /\.svg$/,
                 loader: 'svg-inline-loader'
-            }, 
-            { 
-                test: /\.jpg$/, 
-                loader: "file-loader" 
+            },
+            {
+                test: /\.jpg$/,
+                loader: "file-loader"
             }
         ]
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
     plugins: [
         new HtmlWebpackPlugin({
-          template: "./public/index.html"
+            template: "./public/index.html"
         })
-      ]
+    ]
 };
