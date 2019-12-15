@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Header from './components/header/header';
-
+import { HeaderLayout } from './components/header/header';
+import { BodyLayout } from './components/body/body';
+import { FooterLayout } from './components/footer/footer';
+import sampleData from './sampleData.json'
 class App extends Component {
   render() {
     return (
       <div className="App">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <Header /> 
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <HeaderLayout /> 
+          <BodyLayout data={sampleData.data}/>
+          <FooterLayout />
       </div>
     );
   }

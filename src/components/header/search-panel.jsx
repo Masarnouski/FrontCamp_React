@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Filter from './filter'
+import Filter from '../shared/filter'
 
 const Header = styled.h1`
   font-size: 30px;

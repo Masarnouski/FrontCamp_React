@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Filter from './filter'
 import SearchPanel from './search-panel';
 
 const Backgroud = styled.div`
@@ -17,7 +16,7 @@ const Logo = styled.div`
   color: #ff0000;
 `;
 
-const Header = () => {
+export const HeaderLayout = () => {
     return (
         <Backgroud >
             <Logo>netflixroulette</Logo>
@@ -26,5 +25,3 @@ const Header = () => {
     )
 }
 
-
-export default Header;
