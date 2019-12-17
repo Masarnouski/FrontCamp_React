@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Filter from '../shared/filter'
+import { setSearchFilter } from '../../actions/index'
+import { connect } from 'react-redux'
 
 const Header = styled.h1`
   font-size: 30px;
@@ -34,7 +36,7 @@ const InputField = styled.input`
     padding-bottom: 1vh;
     `;
 
-const Wrapper =  styled.div`
+const Wrapper = styled.div`
     position: absolute; 
     top: 50%; 
     left: 50%; 
@@ -42,27 +44,27 @@ const Wrapper =  styled.div`
 `;
 
 
-function addItem(e) {
 
-    e.preventDefault();
-
-    const newItem = document.getElementById("addInput");
-    const form = document.getElementById("addItemForm");
-    console.log(newItem.value)
-
-}
-
-const SearchPanel = () => {
+const SearchPanel = ({dispatch}) => {
+    let input;
     return (
         <Wrapper className="wrapper">
             <Header>Find your movie</Header>
             <Form>
-                <InputField />
-                <Button onClick={addItem}>SEARCH</Button>
+                <InputField ref={node => input = node}/>
+                <Button onClick={e => {
+                    e.preventDefault()
+                    if (!input.value.trim()) {
+                        return
+                    }
+                    console.log(input.value)
+                    dispatch(setSearchFilter(input.value))
+                    input.value = ''
+                }}>SEARCH</Button>
             </Form>
             <Filter title={'Search By'} firstButton={'Title'} secondButton={'Genre'} />
         </Wrapper>
     )
 }
 
-export default SearchPanel;
+export default connect()(SearchPanel);
