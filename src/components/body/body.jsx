@@ -32,6 +32,12 @@ export class BodyLayout extends Component {
     super(props);
    }
 
+
+   filterCards = (data, searchValue) =>{
+
+    
+   }
+
   renderCards = (cards) => {
       console.log("Processing renderCards method")
       console.log(cards);
@@ -41,15 +47,18 @@ export class BodyLayout extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, searchValue } = this.props;
+
+    let filteredData = data.filter(x=>x.Genre == searchValue)
+
     return (
       <BodyWrapper>
         <Clearfix alignment={'flex-end'}>
           <Filter title={'Sort By'} firstButton={'Release Date'} secondButton={'Rating'} />
         </Clearfix>
-        <MainContent isEmpty={!data} >
-          {!data && 'No films found'}
-          {!!data && this.renderCards(data)}
+        <MainContent isEmpty={!filteredData} >
+          {!filteredData && 'No films found'}
+          {!!filteredData && this.renderCards(filteredData)}
         </MainContent>
       </BodyWrapper>
     )
