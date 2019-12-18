@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
-import searchFilter from './searchFilter'
+import searchString from './searchString'
+import searchByFilter from './searchByFilter'
+import sortByFilter from './sortByFilter'
 
 export default combineReducers({
-    searchFilter
+    searchString,
+    searchByFilter,
+    sortByFilter
 })

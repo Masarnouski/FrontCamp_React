@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import { Clearfix } from '../shared/clearfix';
 import Filter from '../shared/filter';
- import { FilmCard } from './film-card';
+import { FilmCard } from './film-card';
+import { connect } from 'react-redux'
+
 
 const BodyWrapper = styled.div`
   width: 100vw;
@@ -27,40 +29,46 @@ const MainContent = styled.div`
   ${({ isEmpty }) => isEmpty && EmptyContainer}
 `;
 
-export class BodyLayout extends Component {
+function mapStateToProps(state) {
+  console.log("mapStateToProp");
+  console.log(state)
+  return { searchString: state.searchString }
+};
+
+class BodyLayout extends Component {
   constructor(props) {
     super(props);
-   }
+    console.log(props)
+  }
 
 
-   filterCards = (data, searchValue) =>{
+  renderCards = (cards, searchString) => {
+    let filteredCards;
+    if (searchString) {
+      filteredCards = cards.filter((card) => card.title.trim().toLowerCase().includes(searchString.trim().toLowerCase()));
+    } else {
+      filteredCards = cards;
+    }
 
-    
-   }
-
-  renderCards = (cards) => {
-      console.log("Processing renderCards method")
-      console.log(cards);
-    return cards.map((card) => {
-      return <FilmCard card={card} key={card.id}/>
+    return filteredCards.map((card) => {
+      return <FilmCard card={card} key={card.id} />
     })
   }
 
   render() {
-    const { data, searchValue } = this.props;
-
-    let filteredData = data.filter(x=>x.Genre == searchValue)
-
+    const { data, searchString } = this.props;
     return (
       <BodyWrapper>
         <Clearfix alignment={'flex-end'}>
           <Filter title={'Sort By'} firstButton={'Release Date'} secondButton={'Rating'} />
         </Clearfix>
-        <MainContent isEmpty={!filteredData} >
-          {!filteredData && 'No films found'}
-          {!!filteredData && this.renderCards(filteredData)}
+        <MainContent isEmpty={!data} >
+          {!data && 'No films found'}
+          {!!data && this.renderCards(data, searchString)}
         </MainContent>
       </BodyWrapper>
     )
   }
 }
+
+export default connect(mapStateToProps)(BodyLayout);

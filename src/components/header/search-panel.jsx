@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Filter from '../shared/filter'
-import { setSearchFilter } from '../../actions/index'
+import { setSearchString } from '../../actions/index'
 import { connect } from 'react-redux'
 
 const Header = styled.h1`
@@ -54,12 +54,8 @@ const SearchPanel = ({dispatch}) => {
                 <InputField ref={node => input = node}/>
                 <Button onClick={e => {
                     e.preventDefault()
-                    if (!input.value.trim()) {
-                        return
-                    }
-                    console.log(input.value)
-                    dispatch(setSearchFilter(input.value))
-                    input.value = ''
+                    dispatch(setSearchString(input.value))
+                    // input.value = ''
                 }}>SEARCH</Button>
             </Form>
             <Filter title={'Search By'} firstButton={'Title'} secondButton={'Genre'} />

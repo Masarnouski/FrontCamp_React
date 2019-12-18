@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HeaderLayout } from './components/header/header';
-import { BodyLayout } from './components/body/body';
+import BodyLayout from './components/body/body';
 import { FooterLayout } from './components/footer/footer';
 import sampleData from './sampleData.json'
 class App extends Component {
