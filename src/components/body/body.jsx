@@ -30,15 +30,12 @@ const MainContent = styled.div`
 `;
 
 function mapStateToProps(state) {
-  console.log("mapStateToProp");
-  console.log(state)
   return { searchString: state.searchString }
 };
 
 class BodyLayout extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
 
 

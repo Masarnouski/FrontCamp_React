@@ -1,6 +1,6 @@
 const sortByFilter = (state = '', action) => {
     switch (action.type) {
-      case 'SET_SEARCH_STRING':
+      case 'SET_SORT_FILTER':
         return action.sortByFilter
       default:
         return state

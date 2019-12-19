@@ -36,10 +36,11 @@ export class ToggleButton extends Component {
   }
 
   render() {
-    const { name, isCheckedByDefault, id, handleChange } = this.props;
+    const { name, id, active, onClick } = this.props;
+    console.log(this.props)
     return (
       <Fragment>
-        <Button onChange={handleChange} type="radio" name={name} id={id} defaultChecked={isCheckedByDefault} />
+        <Button onChange={onClick} type="radio" name={name} id={id} defaultChecked={ active ? 'checked' : 'disabled' }/>
         <ButtonLabel htmlFor={id}>{id}</ButtonLabel>
       </Fragment>
       

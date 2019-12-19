@@ -1,14 +1,16 @@
-// import { connect } from 'react-redux'
-// import { BodyLayout } from '../components/body/body'
+import { connect } from 'react-redux'
+import { setSearchFilter } from '../actions'
+import { ToggleButton } from '../components/shared/toggle-button'
 
-// function mapStateToProps(state) {
-//   console.log("STATE" + state);
-//   const { searchValue } = state
+const mapStateToProps = (state, ownProps) => ({
+  active: ownProps.filter === state.searchByFilter
+})
 
-//   return  {searchValueProp: state }
-// }
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onClick: () => dispatch(setSearchFilter(ownProps.filter))
+})
 
-
-// export default connect(
-//   mapStateToProps
-// )(BodyLayout)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ToggleButton)

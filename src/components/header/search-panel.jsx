@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Filter from '../shared/filter'
-import { setSearchString } from '../../actions/index'
+import { setSearchString, setSearchFilter, SearchByFilters } from '../../actions/index'
 import { connect } from 'react-redux'
 
 const Header = styled.h1`
@@ -43,8 +43,6 @@ const Wrapper = styled.div`
     transform: translate(-50%,-50%);
 `;
 
-
-
 const SearchPanel = ({dispatch}) => {
     let input;
     return (
@@ -55,10 +53,9 @@ const SearchPanel = ({dispatch}) => {
                 <Button onClick={e => {
                     e.preventDefault()
                     dispatch(setSearchString(input.value))
-                    // input.value = ''
                 }}>SEARCH</Button>
             </Form>
-            <Filter title={'Search By'} firstButton={'Title'} secondButton={'Genre'} />
+            <Filter title={'Search By'} filter={SearchByFilters} />
         </Wrapper>
     )
 }
