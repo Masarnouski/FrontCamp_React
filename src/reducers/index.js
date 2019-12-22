@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux'
-import searchString from './searchString'
-import searchByFilter from './searchByFilter'
-import sortByFilter from './sortByFilter'
+import { textInputReducer } from './text-input-reducer'
+import searchByReducer from './search-by-reducer'
+import sortByReducer from './sort-by-reducer'
+import { filmListReducer } from './film-list-reducer'
+
 
 export default combineReducers({
-    searchString,
-    searchByFilter,
-    sortByFilter
+    textInputValue:textInputReducer,
+    searchBy:searchByReducer,
+    sortBy:sortByReducer,
+    films: filmListReducer
 })

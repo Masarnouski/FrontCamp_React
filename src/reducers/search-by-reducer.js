@@ -1,13 +1,13 @@
 import { SearchByFilters } from '../actions'
 
-const searchByFilter = (state = SearchByFilters.TITLE, action) => {
+const searchByReducer = (state = SearchByFilters.TITLE, action) => {
     switch (action.type) {
       case 'SET_SEARCH_FILTER':
-        return action.searchByFilter
+        return action.searchType
       default:
         return state
     }
   }
   
-  export default searchByFilter
+  export default searchByReducer
   
