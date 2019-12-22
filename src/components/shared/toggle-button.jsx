@@ -37,7 +37,6 @@ export class ToggleButton extends Component {
 
   render() {
     const { name, id, active, onClick } = this.props;
-    console.log(this.props)
     return (
       <Fragment>
         <Button onChange={onClick} type="radio" name={name} id={id} defaultChecked={ active ? 'checked' : 'disabled' }/>

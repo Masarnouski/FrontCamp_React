@@ -16,11 +16,14 @@ const Logo = styled.div`
   color: #ff0000;
 `;
 
-export const HeaderLayout = () => {
+export const HeaderLayout = ({
+    changeTextInputValue,
+    onClickSubmitButton,
+  }) => {
     return (
         <Backgroud >
             <Logo>netflixroulette</Logo>
-            <SearchPanel />
+            <SearchPanel onClickSubmitButton={onClickSubmitButton} changeTextInputValue={changeTextInputValue} />
         </Backgroud>
     )
 }

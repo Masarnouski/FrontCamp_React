@@ -3,16 +3,21 @@ import { HeaderLayout } from './components/header/header';
 import BodyLayout from './components/body/body';
 import { FooterLayout } from './components/footer/footer';
 import sampleData from './sampleData.json'
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-          <HeaderLayout /> 
-          <BodyLayout data={sampleData.data}/>
-          <FooterLayout />
-      </div>
-    );
-  }
+export const App = ({
+  filmsInfo,
+  onClickTabButton,
+  textInputValue,
+  changeTextInputValue,
+  onClickSubmitButton,
+}) => {
+  return (
+    <div className="App">
+      <HeaderLayout onClickSubmitButton={onClickSubmitButton} changeTextInputValue={changeTextInputValue} />
+      <BodyLayout data={filmsInfo} />
+      <FooterLayout />
+    </div>
+  );
 }
+
 
 export default App;

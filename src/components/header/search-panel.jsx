@@ -43,17 +43,16 @@ const Wrapper = styled.div`
     transform: translate(-50%,-50%);
 `;
 
-const SearchPanel = ({dispatch}) => {
-    let input;
+const SearchPanel = ({onClickSubmitButton, changeTextInputValue}) => {
+    console.log(onClickSubmitButton)
+    console.log(changeTextInputValue)
     return (
         <Wrapper className="wrapper">
             <Header>Find your movie</Header>
-            <Form>
-                <InputField ref={node => input = node}/>
-                <Button onClick={e => {
-                    e.preventDefault()
-                    dispatch(setSearchString(input.value))
-                }}>SEARCH</Button>
+            <Form onChange={ 
+                changeTextInputValue}>
+                <InputField />
+                <Button onClick={onClickSubmitButton}>SEARCH</Button>
             </Form>
             <Filter title={'Search By'} filter={SearchByFilters} />
         </Wrapper>
