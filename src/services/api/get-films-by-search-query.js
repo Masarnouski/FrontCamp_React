@@ -26,6 +26,7 @@ export const getFilmsByQuery = (searchParams) => {
   const queryString = Object.entries(searchParams)
     .map(([key, value]) => `${key}=${value}`)
     .join('&');
-  const url = `${FILMS_BY_ID_PATH}?${queryString}`;
+  const url = `${FILMS_BY_ID_PATH}?${queryString}&sortOrder=asc`;
+  console.log(url)
   return request(url);
 };

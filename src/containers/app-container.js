@@ -10,6 +10,8 @@ class AppContainer extends Component {
   fetchData = async (searchParams) => {
     try {
       const { data: films } = await FilmAPI.getFilmsByQuery(searchParams);
+      console.log(searchParams)
+      console.log(films)
       store.dispatch(getFilms(films));
     } catch (error) {}
   };
@@ -22,14 +24,16 @@ class AppContainer extends Component {
     });
   }
 
-  clickSubmitButton = async () => {
+
+
+  clickSubmitButton = async (e) => {
+    e.preventDefault();
     const { textInputValue, searchBy, sortBy } = this.props;
-    console.log(this.props)
     await this.fetchData({ search: textInputValue, searchBy, sortBy });
   };
 
   render() {
-    const { filmsList, textInputValue, changeTextInputValue, clickTabButton } = this.props;
+    const { filmsList, textInputValue, changeTextInputValue, clickTabButton, clickToggleButton } = this.props;
     return (
       <App
         filmsInfo={filmsList}
@@ -37,6 +41,7 @@ class AppContainer extends Component {
         changeTextInputValue={changeTextInputValue}
         textInputValue={textInputValue}
         onClickSubmitButton={this.clickSubmitButton}
+        onClickToggleButton = {clickToggleButton}
       />
     );
   }
@@ -56,7 +61,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     clickTabButton: () => {
       dispatch(getSortType(sortBy.RELEASE_DATE));
-    },
+    }
   };
 };
 

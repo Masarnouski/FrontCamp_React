@@ -12,7 +12,11 @@ export const App = ({
 }) => {
   return (
     <div className="App">
-      <HeaderLayout onClickSubmitButton={onClickSubmitButton} changeTextInputValue={changeTextInputValue} />
+      <HeaderLayout 
+        onClickSubmitButton={onClickSubmitButton} 
+        changeTextInputValue={changeTextInputValue} 
+        textInputValue={textInputValue}
+        />
       <BodyLayout data={filmsInfo} />
       <FooterLayout />
     </div>

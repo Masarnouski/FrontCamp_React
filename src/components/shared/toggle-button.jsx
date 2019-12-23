@@ -35,14 +35,25 @@ export class ToggleButton extends Component {
     super(props);
   }
 
+  mapIds(id) {
+    if (id == 'release_date')
+      return 'RELEASE DATE'
+    if (id == 'vote_count')
+      return 'RATING'
+    return id;
+  }
+
   render() {
     const { name, id, active, onClick } = this.props;
+
+    let mappedId = this.mapIds(id);
+
     return (
       <Fragment>
-        <Button onChange={onClick} type="radio" name={name} id={id} defaultChecked={ active ? 'checked' : 'disabled' }/>
-        <ButtonLabel htmlFor={id}>{id}</ButtonLabel>
+        <Button onChange={onClick} type="radio" name={name} id={id} defaultChecked={active} />
+        <ButtonLabel htmlFor={id}>{mappedId}</ButtonLabel>
       </Fragment>
-      
+
     )
   }
 

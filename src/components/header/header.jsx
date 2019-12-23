@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchPanel from './search-panel';
+import { SearchPanel } from './search-panel';
 
 const Backgroud = styled.div`
     background-image:url(../assets/header-image.jpg);
@@ -19,11 +19,15 @@ const Logo = styled.div`
 export const HeaderLayout = ({
     changeTextInputValue,
     onClickSubmitButton,
+    textInputValue
   }) => {
     return (
         <Backgroud >
             <Logo>netflixroulette</Logo>
-            <SearchPanel onClickSubmitButton={onClickSubmitButton} changeTextInputValue={changeTextInputValue} />
+            <SearchPanel 
+            onClickSubmitButton={onClickSubmitButton} 
+            changeTextInputValue={changeTextInputValue}
+            textInputValue = {textInputValue} />
         </Backgroud>
     )
 }

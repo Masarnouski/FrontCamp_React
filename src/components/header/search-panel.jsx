@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Filter from '../shared/filter'
-import { setSearchString, setSearchFilter, SearchByFilters } from '../../actions/index'
-import { connect } from 'react-redux'
+import { searchBy } from '../../services';
 
 const Header = styled.h1`
   font-size: 30px;
@@ -43,20 +42,20 @@ const Wrapper = styled.div`
     transform: translate(-50%,-50%);
 `;
 
-const SearchPanel = ({onClickSubmitButton, changeTextInputValue}) => {
-    console.log(onClickSubmitButton)
-    console.log(changeTextInputValue)
+export const SearchPanel = ({
+    onClickSubmitButton,
+    changeTextInputValue, 
+    textInputValue }) => {
     return (
         <Wrapper className="wrapper">
             <Header>Find your movie</Header>
-            <Form onChange={ 
-                changeTextInputValue}>
-                <InputField />
+            <Form>
+                <InputField  value={textInputValue} onChange={changeTextInputValue} />
                 <Button onClick={onClickSubmitButton}>SEARCH</Button>
             </Form>
-            <Filter title={'Search By'} filter={SearchByFilters} />
+            <Filter title={'Search By'} 
+            firstButton = {searchBy.TITLE} 
+            secondButton = {searchBy.GENRES} />
         </Wrapper>
     )
 }
-
-export default connect()(SearchPanel);

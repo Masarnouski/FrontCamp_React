@@ -1,13 +1,7 @@
-export const setSearchString = searchString => ({
-  type: 'SET_SEARCH_STRING',
-  searchString
-})
-
 export const getFilms = (films) => ({
   type: 'ADD_FILMS',
   films
 });
-
 
 export const getTextInputValue = (textInputValue) => ({
   type: 'GET_TEXT_INPUT_VALUE',
@@ -40,4 +34,10 @@ export const SearchByFilters = {
 export const SortByFilters = {
   SHOW_ALL: 'RELEASE_DATE',
   SHOW_COMPLETED: 'RATING'
+}
+
+export const ToggleButtonTypes = {
+  SEARCH_BY: 'Search By',
+  SORT_BY: 'Sort By'
+
 }

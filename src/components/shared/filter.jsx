@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { ToggleButton } from './toggle-button';
-import { SearchByFilters } from '../../actions'
+import ToggleButton from '../../containers/toggle-button-container';
+
 
 const FilterWrapper = styled.div`
   display: flex;
@@ -26,11 +26,12 @@ export default class Filter extends Component {
 
   render() {
     const { title, firstButton, secondButton } = this.props;
+  
     return (
       <FilterWrapper>
         <Title>{title}</Title>
-        <ToggleButton id={SearchByFilters.TITLE} name={title}  />
-        <ToggleButton id={SearchByFilters.GENRE} name={title}  />
+        <ToggleButton id={firstButton} name={title} />
+        <ToggleButton id={secondButton} name={title} />
       </FilterWrapper>
     );
   }

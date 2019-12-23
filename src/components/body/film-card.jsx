@@ -49,7 +49,10 @@ const MovieImage = styled.img`
 `;
 
 const formatDate = (date) => date.slice(0, 4);
-const formatGenres = (genres) => genres.reduce((acc, genre) => `${acc} & ${genre}`);
+const formatGenres = (genres) => {
+  if(genres.length > 0)
+   return genres.reduce((acc, genre) => `${acc} & ${genre}`);
+}
 
 export const FilmCard = ({card}) => (
   <Card>

@@ -4,6 +4,7 @@ import { Clearfix } from '../shared/clearfix';
 import Filter from '../shared/filter';
 import { FilmCard } from './film-card';
 import { connect } from 'react-redux'
+import { sortBy } from '../../services';
 
 
 const BodyWrapper = styled.div`
@@ -57,7 +58,7 @@ class BodyLayout extends Component {
     return (
       <BodyWrapper>
         <Clearfix alignment={'flex-end'}>
-          <Filter title={'Sort By'} firstButton={'Release Date'} secondButton={'Rating'} />
+          <Filter title={'Sort By'} firstButton={sortBy.RATING} secondButton={sortBy.RELEASE_DATE} />
         </Clearfix>
         <MainContent isEmpty={!data} >
           {!data && 'No films found'}

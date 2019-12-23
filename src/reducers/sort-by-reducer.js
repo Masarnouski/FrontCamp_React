@@ -1,11 +1,12 @@
-const sortByReducer = (state = '', action) => {
-    switch (action.type) {
-      case 'SET_SORT_FILTER':
-        return action.sortType
-      default:
-        return state
-    }
+import { sortBy } from '../services';
+
+const initialSortByReducer = sortBy.RELEASE_DATE;
+
+export const sortByReducer = function (state = initialSortByReducer, action) {
+  switch (action.type) {
+    case 'GET_SORT_TYPE':
+      console.log(action.sortType)
+      return action.sortType;
   }
-  
-  export default sortByReducer
-  
+  return state;
+};
