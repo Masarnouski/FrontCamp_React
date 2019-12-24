@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
-import { HeaderLayout } from './components/header/header';
-import BodyLayout from './components/body/body';
-import { FooterLayout } from './components/footer/footer';
-import sampleData from './sampleData.json'
-export const App = ({
+import React from 'react';
+import  { BodyLayout, FooterLayout, HeaderLayout } from '../../components'
+
+export const Home = ({
   filmsInfo,
-  onClickTabButton,
   textInputValue,
   changeTextInputValue,
   onClickSubmitButton,
 }) => {
   return (
-    <div className="App">
+    <div>
       <HeaderLayout 
         onClickSubmitButton={onClickSubmitButton} 
         changeTextInputValue={changeTextInputValue} 
@@ -24,4 +21,4 @@ export const App = ({
 }
 
 
-export default App;
+export default Home;

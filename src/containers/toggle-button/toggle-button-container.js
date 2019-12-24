@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { ToggleButtonTypes, getSearchType, getSortType } from '../actions'
-import { ToggleButton } from '../components/shared/toggle-button'
+import { ToggleButtonTypes, getSearchType, getSortType } from '../../actions'
+import { ToggleButton } from '../../components/common/toggle-button/toggle-button'
 
 function mapStateToProps(state, ownProps) {
     if (ownProps.name == ToggleButtonTypes.SEARCH_BY) {
@@ -20,7 +20,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     }
 }
 
-export default connect(
+export const toggleButton = connect(
     mapStateToProps,
     mapDispatchToProps
 )(ToggleButton)

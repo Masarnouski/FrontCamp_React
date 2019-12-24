@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { FilmAPI, searchBy, sortBy } from '../services';
-import { store } from '../store';
-import { getTextInputValue, getSortType, getFilms } from '../actions';
-import {App} from '../App'
+import { FilmAPI, searchBy, sortBy } from '../../services';
+import { store } from '../../store';
+import { getTextInputValue, getSortType, getFilms } from '../../actions';
+import { Home } from '../../components/home/home'
 
-class AppContainer extends Component {
+class HomeContainer extends Component {
   fetchData = async (searchParams) => {
     try {
       const { data: films } = await FilmAPI.getFilmsByQuery(searchParams);
-      console.log(searchParams)
-      console.log(films)
       store.dispatch(getFilms(films));
     } catch (error) {}
   };
@@ -35,7 +33,7 @@ class AppContainer extends Component {
   render() {
     const { filmsList, textInputValue, changeTextInputValue, clickTabButton, clickToggleButton } = this.props;
     return (
-      <App
+      <Home
         filmsInfo={filmsList}
         onClickTabButton={clickTabButton}
         changeTextInputValue={changeTextInputValue}
@@ -65,4 +63,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export const appContainer = connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export const homeContainer = connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
